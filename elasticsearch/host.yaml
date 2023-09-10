@@ -23,4 +23,4 @@ spec:
                 name: mycluster-es-http
                 port:
                   number: 8080
-  ingressClassName: nginx
+  # ingressClassName: nginx
