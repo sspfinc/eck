@@ -1,0 +1,4 @@
+default:
+  server: https://kubernetes.default.svc
+  repoURL: https://github.com/sspfinc/kubernetes
+  targetRevision: HEAD
