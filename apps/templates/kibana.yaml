@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     path: kibana
-    repoURL: {{.Values.kibana.repoURL}}
+    repoURL: {{.Values.default.repoURL}}
     targetRevision: HEAD
   destination:
     server: {{.Values.default.server}}
