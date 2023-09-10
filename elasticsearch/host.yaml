@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: eck-ingress
+  namespace: eck
+  annotations:
+    cert-manager.io/issuer: eck-issuer
+spec:
+  tls:
+    - hosts:
+        - mycluster.com
+      secretName: eck-issuer-secret
+  rules:
+    - host: mycluster.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mycluster-es-http
+                port:
+                  number: 80
+  ingressClassName: nginx
