@@ -3,13 +3,13 @@ kind: Ingress
 metadata:
   name: eck-ingress
   namespace: eck
-  annotations:
-    cert-manager.io/issuer: eck-issuer
+  # annotations:
+  #   cert-manager.io/issuer: eck-issuer
 spec:
-  tls:
-    - hosts:
-        - mycluster.com
-      secretName: eck-issuer-secret
+  # tls:
+  #   - hosts:
+  #       - mycluster.com
+  #     secretName: eck-issuer-secret
   rules:
     - host: mycluster.com
       http:
