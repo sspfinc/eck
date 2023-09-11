@@ -12,14 +12,7 @@ argocd login localhost:8080 --username $ADMIN_USER --password $ADMIN_PASSWD --in
 
 argocd repo add https://github.com/sspfinc/eck --username sspfinc --password $password
 
-argocd app create tools \
-  --dest-namespace argocd \
-  --dest-server https://kubernetes.default.svc \
-  --repo https://github.com/sspfinc/eck.git \
-  --path helm \
-  --sync-policy automated \
-  --auto-prune \
-  --self-heal
+
 
 argocd app create applications \
 --repo https://github.com/sspfinc/eck.git \

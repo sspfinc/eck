@@ -13,14 +13,14 @@ spec:
   #       - mycluster.com
   #     secretName: eck-issuer-secret
   rules:
-    - host: mycluster.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: mycluster-es-http
-                port:
-                  number: 8080
-  # ingressClassName: nginx
+  - host: mycluster.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: mycluster-es-http
+            port:
+              number: 8080
+  # ingressClassName: nginxkubectl get ingress

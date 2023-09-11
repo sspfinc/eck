@@ -1,0 +1,17 @@
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: mycluster
+spec:
+  version: 8.9.2
+  nodeSets:
+  - name: master-nodes
+    count: 1
+    config:
+      node.roles: ["master"]
+      node.store.allow_mmap: false
+  - name: data-nodes
+    count: 1
+    config:
+      node.roles: ["data"]
+      node.store.allow_mmap: false

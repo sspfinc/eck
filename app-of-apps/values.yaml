@@ -1,0 +1,13 @@
+spec:
+  destination:
+    # HIGHLIGHT
+    server: https://kubernetes.default.svc
+  source:
+    # HIGHLIGHT
+    repoURL: https://github.com/sspfinc/eck
+    # HIGHLIGHT
+    targetRevision: main
+
+# HIGHLIGHT
+applications:
+- name: cert-manager

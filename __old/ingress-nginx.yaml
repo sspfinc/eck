@@ -1,22 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kibana
+  name: ingress-nginx
   namespace: argocd
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    path: kibana
-    repoURL: {{.Values.default.repoURL}}
+    path: ingress-nginx
+    repoURL: {? {.Values.default.repoURL: ''} : ''}
     targetRevision: HEAD
   destination:
-    server: {{.Values.default.server}}
-    namespace: eck
+    server: {? {.Values.default.server: ''} : ''}
+    namespace: ingress-nginx
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true
