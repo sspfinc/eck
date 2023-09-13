@@ -12,3 +12,7 @@ spec:
 applications:
 - name: cert-manager
   syncWave: "0"
+
+
+traefik:
+  enable: true
