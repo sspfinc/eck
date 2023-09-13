@@ -1,20 +1,20 @@
-helm repo add cert-manager https://charts.jetstack.io
-helm repo update
-cd ./cert-manager && helm template -n cert-manager cert-manager jetstack/cert-manager \
-    --version v1.12.4 \
-    --set image.registry=https://charts.jetstack.io \
-    --values values.yaml \
-    > generated.yaml \
-    && cd ../
+# helm repo add cert-manager https://charts.jetstack.io
+# helm repo update
+# cd ./cert-manager && helm template -n cert-manager cert-manager jetstack/cert-manager \
+#     --version v1.12.4 \
+#     --set image.registry=https://charts.jetstack.io \
+#     --values values.yaml \
+#     > generated.yaml \
+#     && cd ../
 
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-helm repo update
-cd ./ingress-nginx && helm template -n ingress-nginx ingress-nginx ingress-nginx/ingress-nginx \
-    --version v4.7.2 \
-    --set image.registry=https://kubernetes.github.io/ingress-nginx \
-    --values values.yaml \
-    > generated.yaml \
-    && cd ../
+# helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+# helm repo update
+# cd ./ingress-nginx && helm template -n ingress-nginx ingress-nginx ingress-nginx/ingress-nginx \
+#     --version v4.7.2 \
+#     --set image.registry=https://kubernetes.github.io/ingress-nginx \
+#     --values values.yaml \
+#     > generated.yaml \
+#     && cd ../
 
 helm repo add bitnami-labs https://bitnami-labs.github.io/sealed-secrets/
 helm repo update

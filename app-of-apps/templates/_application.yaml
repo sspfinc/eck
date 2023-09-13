@@ -1,6 +1,7 @@
 {{- define "application" -}}
 {{- $root:= . }}
 {{- range $application := .Values.applications}}
+{{- if $application.enabled }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -23,5 +24,6 @@ spec:
     automated:
       prune: true
       selfHeal: true
+{{- end -}}
 {{- end -}}
 {{- end -}}

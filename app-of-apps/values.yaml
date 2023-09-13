@@ -10,8 +10,9 @@ spec:
 
 # HIGHLIGHT
 applications:
-# - name: elasticsearch
-#   syncWave: "0"
+- name: elasticsearch
+  enabled: true
+  syncWave: "1"
 
 traefik:
   enable: true
