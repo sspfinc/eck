@@ -25,11 +25,11 @@ cd ./sealed-secrets && helm template -n sealed-secrets sealed-secrets bitnami-la
     > generated.yaml \
     && cd ../
 
-helm repo add traefik https://traefik.github.io/charts
-helm repo update
-cd ./traefik && helm template -n traefik traefik traefik/traefik \
-    --version v24.0.0 \
-    --set image.registry=https://traefik.github.io/charts \
-    --values values.yaml \
-    > generated.yaml \
-    && cd ../
+# helm repo add traefik https://traefik.github.io/charts
+# helm repo update
+# cd ./traefik && helm template -n traefik traefik traefik/traefik \
+#     --version v20.8.0 \
+#     --set image.registry=https://traefik.github.io/charts \
+#     --values values.yaml \
+#     > generated.yaml \
+#     && cd ../
