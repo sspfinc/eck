@@ -10,7 +10,7 @@ spec:
 
 # HIGHLIGHT
 applications:
-# - name: traefik
-#   syncWave: "-2"
+- name: traefik
+  syncWave: "'-2'"
 - name: cert-manager
-  syncWave: "0"
+  syncWave: "'0'"

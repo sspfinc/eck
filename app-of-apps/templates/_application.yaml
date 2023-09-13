@@ -7,8 +7,8 @@ kind: Application
 metadata:
   name: {{  $application.name }}
   namespace: argocd
-  # annotations:
-  #   argocd.argoproj.io/sync-wave: {{  $application.syncWave }}
+  annotations:
+    argocd.argoproj.io/sync-wave: {{  $application.syncWave }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
