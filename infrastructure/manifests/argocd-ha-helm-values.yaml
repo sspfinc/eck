@@ -1,0 +1,27 @@
+redis-ha:
+  enabled: true
+  hardAntiAffinity: false
+  haproxy.hardAntiAffinity: false
+  # redis:
+  #   config: |
+  #     replicas: 2
+
+
+controller:
+  replicas: 1
+
+server:
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+  extraArgs:
+  - --insecure
+
+repoServer:
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+
+applicationSet:
+  replicaCount: 2
+
