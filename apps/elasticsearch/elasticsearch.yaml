@@ -9,9 +9,7 @@ spec:
     count: 2
     config:
       node.roles: ["master"]
-      node.store.allow_mmap: false
   - name: data-nodes
     count: 3
     config:
       node.roles: ["data"]
-      node.store.allow_mmap: false
