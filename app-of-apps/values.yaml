@@ -11,6 +11,6 @@ spec:
 # HIGHLIGHT
 applications:
 - name: traefik
-  sync-wave: -2
+  sync-wave: "-2"
 - name: cert-manager
-  sync-wave: 0
+  sync-wave: "0"
