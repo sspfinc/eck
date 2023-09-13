@@ -10,9 +10,8 @@ spec:
 
 # HIGHLIGHT
 applications:
-- name: cert-manager
-  syncWave: "0"
-
+# - name: elasticsearch
+#   syncWave: "0"
 
 traefik:
   enable: true
