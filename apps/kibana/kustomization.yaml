@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: eck
 resources:
 - namespace.yaml
-- generated.yaml
+- kibana.yaml
