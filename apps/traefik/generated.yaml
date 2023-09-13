@@ -8,7 +8,7 @@ metadata:
   labels:
     app.kubernetes.io/name: traefik
     app.kubernetes.io/instance: traefik-traefik
-    helm.sh/chart: traefik-24.0.0
+    helm.sh/chart: traefik-20.8.0
     app.kubernetes.io/managed-by: Helm
   annotations:
 ---
@@ -20,7 +20,7 @@ metadata:
   labels:
     app.kubernetes.io/name: traefik
     app.kubernetes.io/instance: traefik-traefik
-    helm.sh/chart: traefik-24.0.0
+    helm.sh/chart: traefik-20.8.0
     app.kubernetes.io/managed-by: Helm
 rules:
   - apiGroups:
@@ -51,7 +51,6 @@ rules:
     verbs:
       - update
   - apiGroups:
-      - traefik.io
       - traefik.containo.us
     resources:
       - ingressroutes
@@ -76,7 +75,7 @@ metadata:
   labels:
     app.kubernetes.io/name: traefik
     app.kubernetes.io/instance: traefik-traefik
-    helm.sh/chart: traefik-24.0.0
+    helm.sh/chart: traefik-20.8.0
     app.kubernetes.io/managed-by: Helm
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -96,7 +95,7 @@ metadata:
   labels:
     app.kubernetes.io/name: traefik
     app.kubernetes.io/instance: traefik-traefik
-    helm.sh/chart: traefik-24.0.0
+    helm.sh/chart: traefik-20.8.0
     app.kubernetes.io/managed-by: Helm
   annotations:
 spec:
@@ -123,7 +122,7 @@ metadata:
   labels:
     app.kubernetes.io/name: traefik
     app.kubernetes.io/instance: traefik-traefik
-    helm.sh/chart: traefik-24.0.0
+    helm.sh/chart: traefik-20.8.0
     app.kubernetes.io/managed-by: Helm
   annotations:
 spec:
@@ -147,14 +146,14 @@ spec:
       labels:
         app.kubernetes.io/name: traefik
         app.kubernetes.io/instance: traefik-traefik
-        helm.sh/chart: traefik-24.0.0
+        helm.sh/chart: traefik-20.8.0
         app.kubernetes.io/managed-by: Helm
     spec:
       serviceAccountName: traefik
       terminationGracePeriodSeconds: 60
       hostNetwork: false
       containers:
-      - image: https://traefik.github.io/charts/traefik:v2.10.4
+      - image: traefik:v2.9.6
         imagePullPolicy: IfNotPresent
         name: traefik
         resources:
@@ -193,11 +192,13 @@ spec:
           containerPort: 8443
           protocol: "TCP"
         securityContext:
-          allowPrivilegeEscalation: false
           capabilities:
             drop:
             - ALL
           readOnlyRootFilesystem: true
+          runAsGroup: 65532
+          runAsNonRoot: true
+          runAsUser: 65532
         volumeMounts:
           - name: data
             mountPath: /data
@@ -217,25 +218,13 @@ spec:
           - "--providers.kubernetescrd"
           - "--providers.kubernetesingress"
           - "--entrypoints.websecure.http.tls=true"
-        env:
-          - name: POD_NAME
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.name
-          - name: POD_NAMESPACE
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.namespace
       volumes:
         - name: data
           emptyDir: {}
         - name: tmp
           emptyDir: {}
       securityContext:
-        fsGroupChangePolicy: OnRootMismatch
-        runAsGroup: 65532
-        runAsNonRoot: true
-        runAsUser: 65532
+        fsGroup: 65532
 ---
 # Source: traefik/templates/ingressclass.yaml
 apiVersion: networking.k8s.io/v1
@@ -246,23 +235,26 @@ metadata:
   labels:
     app.kubernetes.io/name: traefik
     app.kubernetes.io/instance: traefik-traefik
-    helm.sh/chart: traefik-24.0.0
+    helm.sh/chart: traefik-20.8.0
     app.kubernetes.io/managed-by: Helm
   name: traefik
 spec:
   controller: traefik.io/ingress-controller
 ---
-# Source: traefik/templates/dashboard-ingressroute.yaml
-apiVersion: traefik.io/v1alpha1
+# Source: traefik/templates/dashboard-hook-ingressroute.yaml
+apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: traefik-dashboard
   namespace: traefik
   annotations:
+    helm.sh/hook: "post-install,post-upgrade"
+    meta.helm.sh/release-name: traefik
+    meta.helm.sh/release-namespace: traefik
   labels:
     app.kubernetes.io/name: traefik
     app.kubernetes.io/instance: traefik-traefik
-    helm.sh/chart: traefik-24.0.0
+    helm.sh/chart: traefik-20.8.0
     app.kubernetes.io/managed-by: Helm
 spec:
   entryPoints:
