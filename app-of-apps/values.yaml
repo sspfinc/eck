@@ -13,6 +13,9 @@ applications:
 - name: elasticsearch
   enabled: true
   syncWave: "1"
+- name: kibana
+  enabled: true
+  syncWave: "2"
 
 traefik:
   enable: true
