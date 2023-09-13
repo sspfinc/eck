@@ -1,0 +1,4 @@
+__k8s-bootstrapper-main/
+__old/
+
+.terraform/
