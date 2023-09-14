@@ -6,5 +6,5 @@ resources:
 - issuer.yaml
 
 
-patchesStrategicMerge:
+patches:
 - patch-configMap.yaml
