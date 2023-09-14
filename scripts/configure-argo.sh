@@ -8,7 +8,7 @@ done
 ADMIN_USER="admin"
 ADMIN_PASSWD="$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)"
 
-argocd login localhost:8080 --username $ADMIN_USER --password $ADMIN_PASSWD --insecure
+argocd login argocd.peterfarber.com --username $ADMIN_USER --password $ADMIN_PASSWD --grpc-web
 
 argocd repo add https://github.com/sspfinc/eck --username sspfinc --password $password
 
