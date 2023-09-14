@@ -56,7 +56,7 @@ applications:
         ignoreUnfixed: true
 
 - name: kube-prometheus-stack
-  enabled: false
+  enabled: true
   syncWave: "2"
   namespace: monitoring
   createNamespace: true
