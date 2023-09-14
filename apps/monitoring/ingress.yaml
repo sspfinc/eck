@@ -32,6 +32,6 @@ spec:
   #           port:
   #             number: 80
   tls:
-  - secretName: argocd-secret-tls
+  - secretName: grafana-secret-tls
     hosts:
     - grafana.petersfarber.com
