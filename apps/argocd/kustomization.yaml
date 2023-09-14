@@ -3,5 +3,6 @@ kind: Kustomization
 namespace: argocd
 resources:
 - ingress.yaml
+- prometheus-ingress.yaml
 - issuer.yaml
 
