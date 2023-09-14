@@ -1,3 +1,16 @@
+# Middleware
+# Strip prefix /overview
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: mw-sp
+  namespace: monitoring
+spec:
+  stripPrefix:
+    forceSlash: false
+    prefixes:
+    - /overview
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -7,6 +20,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
     cert-manager.io/cluster-issuer: letsencrypt-issuer
+    traefik.ingress.kubernetes.io/router.middlewares: monitoring-mw-sp@kubernetescrd
 spec:
   ingressClassName: traefik
   rules:
