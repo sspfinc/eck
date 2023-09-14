@@ -15,6 +15,10 @@ applications:
   enabled: true
   syncWave: "4"
 
+- name: argocd
+  enabled: true
+  syncWave: "-5"
+
 - name: traefik
   enabled: true
   syncWave: "-2"
