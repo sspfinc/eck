@@ -20,7 +20,7 @@ spec:
           service:
             name: mykibana-kb-http
             port:
-              number: 80
+              number: 5601
 
   tls:
   - secretName: kibana-secret-tls
