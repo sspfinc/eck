@@ -9,15 +9,15 @@ spec:
 applications:
 - name: elasticsearch
   enabled: true
-  syncWave: "1"
+  syncWave: "3"
 
 - name: kibana
   enabled: true
-  syncWave: "2"
+  syncWave: "4"
 
 - name: traefik
   enabled: true
-  syncWave: "2"
+  syncWave: "-2"
   createNamespace: true
   repoURL: https://traefik.github.io/charts
   targetRevision: v24.0.0
@@ -35,18 +35,19 @@ applications:
         enabled: false # has to be false if you do not have Prometheus already installed
       trivy:
         ignoreUnfixed: true
+
 - name: cert-manager
   enabled: true
-  syncWave: "2"
+  syncWave: "0"
   createNamespace: true
   helm:
     parameters:
     - name: installCRDs
-      value: true
+      value: 'true'
     - name: prometheus.servicemonitor.enabled
-      value: false
+      value: 'false'
     - name: prometheus.servicemonitor.honorLabels
-      value: false
+      value: 'false'
   repoURL: https://charts.jetstack.io
   targetRevision: v1.9.2
 
