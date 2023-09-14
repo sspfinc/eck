@@ -65,7 +65,7 @@ applications:
   helm:
     values: |
       alertmanager:
-          enabled: true
+        enabled: true
         defaultRules:
           create: true
           rules:
