@@ -24,6 +24,7 @@ spec:
     http:
       paths:
       - path: /prometheus
+        pathType: Prefix
         backend:
           service:
             name: kube-prometheus-stack-prometheus
