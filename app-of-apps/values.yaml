@@ -20,7 +20,7 @@ applications:
   syncWave: "-5"
 
 - name: monitoring
-  enable: true
+  enabled: true
   syncWave: "-5"
 
 
