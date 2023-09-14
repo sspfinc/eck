@@ -5,6 +5,5 @@ resources:
 - ingress.yaml
 - issuer.yaml
 
-
 patches:
-- patch-configMap.yaml
+- path: patch-configMap.yaml
