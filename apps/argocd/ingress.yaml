@@ -46,3 +46,5 @@ spec:
     hosts:
     # Add domain
     - argocd.petersfarber.com
+    - prometheus.petersfarber.com
+    - grafana.petersfarber.com
