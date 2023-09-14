@@ -22,9 +22,8 @@ spec:
     chart: {{ $application.name }}
     helm: {{ toYaml $application.helm | nindent 6 }}
     repoURL: {{ $application.repoURL }}
-    targetRevision: {{ $application.targetRevision }}
-    
-  {{- else}}
+    targetRevision: {{ $application.targetRevision }}    
+{{- else}}
   destination:
     namespace: {{ $root.Values.spec.destination.namespace }}
     server: {{ $root.Values.spec.destination.server }}
