@@ -14,16 +14,34 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
+
+  {{- if $application.chart }}
   destination:
+    namespace: {{ $application.namespace | default $application.name }}
+    server: {{ $root.Values.spec.destination.server }}
+  source:
+    chart: {{ $application.name }}
+    helm: {{ $application.helm | '' }}
+    repoURL: {{ $application.repoURL }}
+    targetRevision: {{ $application.targetRevision }}
+  {{- else}}
+  destination:
+    namespace: {{ $root.Values.spec.destination.namespace }}
     server: {{ $root.Values.spec.destination.server }}
   source:
     repoURL: {{ $root.Values.spec.source.repoURL }}
     targetRevision: {{ $root.Values.spec.source.targetRevision }}
     path: apps/{{  $application.name }}
+  {{- end -}}
+
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true
+      selfHeal: true  
+    {{- if $application.createNamespace }}
+    syncOptions:
+    - CreateNamespace=true
+    {{- end -}}
 {{- end -}}
 {{- end -}}
 {{- end -}}
