@@ -6,6 +6,7 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-issuer
 spec:
   ingressClassName: traefik
   rules:
@@ -20,6 +21,6 @@ spec:
             port:
               number: 80
   tls:
-  - secretName: petersfarber.com
+  - secretName: argocd-secret-tls
     hosts:
-    - "*.petersfarber.com"
+    - argocd.petersfarber.com
