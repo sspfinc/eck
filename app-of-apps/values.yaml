@@ -25,6 +25,10 @@ applications:
   createNamespace: true
   repoURL: https://traefik.github.io/charts
   targetRevision: v24.0.0
+  helm:
+    values: |
+      serversTransport:
+        insecureSkipVerify: true
 
 - name: trivy-operator
   enabled: true
