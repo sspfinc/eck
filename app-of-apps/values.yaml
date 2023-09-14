@@ -19,6 +19,10 @@ applications:
   enabled: true
   syncWave: "-5"
 
+- name: prometheus
+  enabled: true
+  syncWave: "-4"
+
 - name: cert-manager
   enabled: true
   syncWave: "0"
@@ -62,3 +66,6 @@ applications:
   createNamespace: true
   repoURL: https://prometheus-community.github.io/helm-charts
   targetRevision: v51.0.3
+
+
+
