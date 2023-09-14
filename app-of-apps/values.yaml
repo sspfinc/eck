@@ -70,5 +70,8 @@ applications:
   helm:
     values: |
       prometheus.prometheusSpec.externalUrl: "prometheus.petersfarber.com/prometheus"
+      prometheusOperator.admissionWebhooks.enabled: false
+      prometheusOperator.admissionWebhooks.patch.enabled: false
+      prometheusOperator.tlsProxy.enabled: false
 
 
