@@ -5,4 +5,5 @@ resources:
 - ingress.yaml
 - issuer.yaml
 - prometheus
+- grafana
 
