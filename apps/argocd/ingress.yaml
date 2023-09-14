@@ -21,6 +21,26 @@ spec:
             name: argocd-server
             port:
               number: 80
+  - host: prometheus.petersfarber.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kube-prometheus-stack-prometheus
+            port:
+              number: 80
+  - host: grafana.petersfarber.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kube-prometheus-stack-grafana
+            port:
+              number: 80
   tls:
   - secretName: argocd-secret-tls
     hosts:
