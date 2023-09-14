@@ -18,7 +18,6 @@ applications:
 - name: traefik
   enabled: true
   syncWave: "2"
-  chart: true
   createNamespace: true
   repoURL: https://traefik.github.io/charts
   targetRevision: v24.0.0
@@ -26,31 +25,29 @@ applications:
 - name: trivy-operator
   enabled: true
   syncWave: "2"
-  chart: true
   namespace: trivy-system
   createNamespace: true
   repoURL: https://aquasecurity.github.io/helm-charts/
   targetRevision: v0.10.1
-  helm: |
+  helm:
     values: |
-    serviceMonitor:
-      enabled: false # has to be false if you do not have Prometheus already installed
-    trivy:
-      ignoreUnfixed: true
-
+      serviceMonitor:
+        enabled: false # has to be false if you do not have Prometheus already installed
+      trivy:
+        ignoreUnfixed: true
 - name: cert-manager
   enabled: true
   syncWave: "2"
-  chart: true
   createNamespace: true
-  repoURL: https://charts.jetstack.io
-  targetRevision: v1.9.2
-  helm: |
+  helm:
     parameters:
     - name: installCRDs
-      value: 'true'
+      value: true
     - name: prometheus.servicemonitor.enabled
-      value: 'false'
+      value: false
     - name: prometheus.servicemonitor.honorLabels
-      value: 'false'
+      value: false
+  repoURL: https://charts.jetstack.io
+  targetRevision: v1.9.2
+
 

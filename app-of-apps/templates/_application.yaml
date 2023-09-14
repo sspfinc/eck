@@ -14,14 +14,13 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
-
-  {{- if $application.chart }}
+{{- if $application.repoURL }}
   destination:
     namespace: {{ $application.namespace | default $application.name }}
     server: {{ $root.Values.spec.destination.server }}
   source:
     chart: {{ $application.name }}
-    helm: {{ $application.helm | '' }}
+    helm: {{ toYaml $application.helm | nindent 6 }}
     repoURL: {{ $application.repoURL }}
     targetRevision: {{ $application.targetRevision }}
   {{- else}}
@@ -32,16 +31,16 @@ spec:
     repoURL: {{ $root.Values.spec.source.repoURL }}
     targetRevision: {{ $root.Values.spec.source.targetRevision }}
     path: apps/{{  $application.name }}
-  {{- end -}}
-
+{{- end }}
   syncPolicy:
     automated:
       prune: true
       selfHeal: true  
-    {{- if $application.createNamespace }}
+  {{- if $application.createNamespace }}
     syncOptions:
     - CreateNamespace=true
-    {{- end -}}
-{{- end -}}
-{{- end -}}
-{{- end -}}
+  {{- end }}
+
+{{- end }}
+{{- end }}
+{{- end }}
