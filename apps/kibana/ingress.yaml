@@ -26,3 +26,8 @@ spec:
   - secretName: kibana-secret-tls
     hosts:
     - kibana.petersfarber.com
+
+status:
+  loadBalancer:
+    ingress:
+    - {}
