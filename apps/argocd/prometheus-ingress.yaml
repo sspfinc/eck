@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-argocd
-  namespace: argocd
+  name: ingress-prometheus
+  namespace: monitoring
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
@@ -10,18 +10,28 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  # Add domain
-  - host: argocd.petersfarber.com
+  - host: prometheus.petersfarber.com
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: argocd-server
+            name: kube-prometheus-stack-prometheus
+            port:
+              number: 80
+  - host: grafana.petersfarber.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kube-prometheus-stack-grafana
             port:
               number: 80
   tls:
   - secretName: argocd-secret-tls
     hosts:
-    - argocd.petersfarber.com
+    - prometheus.petersfarber.com
+    - grafana.petersfarber.com
