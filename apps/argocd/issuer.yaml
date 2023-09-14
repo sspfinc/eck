@@ -2,7 +2,6 @@ apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-issuer
-  namespace: argocd
 spec:
   acme:
     email: peter@capsl8.com
