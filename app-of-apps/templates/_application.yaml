@@ -25,7 +25,6 @@ spec:
     targetRevision: {{ $application.targetRevision }}
   {{- else}}
   destination:
-    namespace: {{ $root.Values.spec.destination.namespace }}
     server: {{ $root.Values.spec.destination.server }}
   source:
     repoURL: {{ $root.Values.spec.source.repoURL }}
