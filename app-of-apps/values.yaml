@@ -69,7 +69,7 @@ applications:
   targetRevision: v51.0.3
   helm:
     values: |
-      prometheus.prometheusSpec.externalUrl: "prometheus.petersfarber.com/prometheus"
+      prometheus.prometheusSpec.externalUrl: https://prometheus.petersfarber.com/prometheus
       prometheusOperator.admissionWebhooks.enabled: false
       prometheusOperator.admissionWebhooks.patch.enabled: false
       prometheusOperator.tlsProxy.enabled: false

@@ -23,6 +23,7 @@ spec:
     helm: {{ toYaml $application.helm | nindent 6 }}
     repoURL: {{ $application.repoURL }}
     targetRevision: {{ $application.targetRevision }}
+    
   {{- else}}
   destination:
     namespace: {{ $root.Values.spec.destination.namespace }}
