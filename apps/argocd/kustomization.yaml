@@ -4,7 +4,6 @@ resources:
 - ingress.yaml
 - grafana-ingress.yaml
 - prometheus-ingress.yaml
-- ingress.yaml
 - issuer.yaml
 
 
