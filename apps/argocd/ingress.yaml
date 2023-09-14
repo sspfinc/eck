@@ -21,6 +21,6 @@ spec:
             port:
               number: 80
   tls:
-  - secretName: argocd-secret-tls
+  - secretName: petersfarber.com
     hosts:
-    - argocd.petersfarber.com
+    - "*.petersfarber.com"
