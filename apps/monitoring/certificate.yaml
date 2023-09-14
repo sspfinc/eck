@@ -9,7 +9,7 @@ spec:
   secretName: petersfarber.com
   # What Issuer to use for getting the certificate.
   issuerRef:
-    name: letsencrypt-monitoring-issuer
+    name: letsencrypt-issuer
     kind: Issuer
     group: cert-manager.io
   # Common name to be used on the Certificate.
