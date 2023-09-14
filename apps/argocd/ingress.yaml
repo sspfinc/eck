@@ -8,6 +8,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
     cert-manager.io/cluster-issuer: letsencrypt-issuer
 spec:
+  type: LoadBalancer
   rules:
   # Add domain
   - host: argocd.petersfarber.com
