@@ -19,6 +19,9 @@ applications:
   enabled: true
   syncWave: "-5"
 
+- name: monitoring
+  enable: true
+  syncWave: "-5"
 
 
 - name: cert-manager
