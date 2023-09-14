@@ -24,4 +24,3 @@ spec:
   - secretName: argocd-secret-tls
     hosts:
     - prometheus.petersfarber.com
-    - grafana.petersfarber.com
