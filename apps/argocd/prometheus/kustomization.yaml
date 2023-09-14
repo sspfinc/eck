@@ -3,5 +3,4 @@ kind: Kustomization
 namespace: monitoring
 resources:
 - ingress.yaml
-- issuer.yaml
 
