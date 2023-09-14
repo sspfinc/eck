@@ -55,6 +55,60 @@ applications:
       trivy:
         ignoreUnfixed: true
 
-
-
-
+- name: kube-prometheus-stack
+  enabled: false
+  syncWave: "2"
+  namespace: monitoring
+  createNamespace: true
+  repoURL: https://prometheus-community.github.io/helm-charts
+  targetRevision: v51.0.3
+  helm:
+    values: |
+      alertmanager:
+          enabled: true
+        defaultRules:
+          create: true
+          rules:
+            etcd: false
+            kubeScheduler: false
+        grafana:
+          enabled: true
+        kubeEtcd:
+          enabled: false
+        kubeScheduler:
+          enabled: false
+        prometheus:
+          enabled: true
+          additionalServiceMonitors:
+            - name: "loki-monitor"
+              selector:
+                matchLabels:
+                  app: loki
+                  release: loki
+              namespaceSelector:
+                matchNames:
+                  - loki-stack
+              endpoints:
+                - port: "http-metrics"
+            - name: "promtail-monitor"
+              selector:
+                matchLabels:
+                  app: promtail
+                  release: loki
+              namespaceSelector:
+                matchNames:
+                  - loki-stack
+              endpoints:
+                - port: "http-metrics"
+          prometheusSpec:
+            storageSpec:
+              volumeClaimTemplate:
+                spec:
+                  accessModes:
+                    - ReadWriteOnce
+                  resources:
+                    requests:
+                      storage: 5Gi
+                  storageClassName: do-block-storage
+        prometheusOperator:
+          enabled: true
