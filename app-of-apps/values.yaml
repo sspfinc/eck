@@ -19,28 +19,6 @@ applications:
   enabled: true
   syncWave: "-5"
 
-- name: traefik
-  enabled: true
-  syncWave: "-2"
-  createNamespace: true
-  repoURL: https://traefik.github.io/charts
-  targetRevision: v24.0.0
-
-
-- name: trivy-operator
-  enabled: true
-  syncWave: "2"
-  namespace: trivy-system
-  createNamespace: true
-  repoURL: https://aquasecurity.github.io/helm-charts/
-  targetRevision: v0.10.1
-  helm:
-    values: |
-      serviceMonitor:
-        enabled: false # has to be false if you do not have Prometheus already installed
-      trivy:
-        ignoreUnfixed: true
-
 - name: cert-manager
   enabled: true
   syncWave: "0"
@@ -55,5 +33,28 @@ applications:
       value: 'false'
   repoURL: https://charts.jetstack.io
   targetRevision: v1.9.2
+
+- name: traefik
+  enabled: true
+  syncWave: "-2"
+  createNamespace: true
+  repoURL: https://traefik.github.io/charts
+  targetRevision: v24.0.0
+
+- name: trivy-operator
+  enabled: false
+  syncWave: "2"
+  namespace: trivy-system
+  createNamespace: true
+  repoURL: https://aquasecurity.github.io/helm-charts/
+  targetRevision: v0.10.1
+  helm:
+    values: |
+      serviceMonitor:
+        enabled: false # has to be false if you do not have Prometheus already installed
+      trivy:
+        ignoreUnfixed: true
+
+
 
 
