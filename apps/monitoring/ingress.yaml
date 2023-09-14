@@ -24,7 +24,7 @@ spec:
   - host: prometheus.petersfarber.com
     http:
       paths:
-      - path: /
+      - path: /prometheus
         pathType: Prefix
         backend:
           service:
