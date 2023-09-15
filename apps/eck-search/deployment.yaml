@@ -21,78 +21,25 @@ spec:
       - name: eck-search
         image: sspf/eck-search
         env:
-        - name: JWT_SECRET
+        - name: ECK_NODE
           valueFrom:
             secretKeyRef:
-              name: api-secret
-              key: JWT_SECRET
-        - name: MONGO_URI
+              name: eck-search-secret
+              key: ECK_NODE
+        - name: ECK_APIKEY
           valueFrom:
             secretKeyRef:
-              name: api-secret
-              key: MONGO_URI
-        - name: TWITTER_CONFIG
-          valueFrom:
-            secretKeyRef:
-              name: api-secret
-              key: TWITTER_CONFIG
-        - name: ES_NODE
-          valueFrom:
-            secretKeyRef:
-              name: api-secret
-              key: ES_NODE
-        - name: ES_AUTH_APIKEY
-          valueFrom:
-            secretKeyRef:
-              name: api-secret
-              key: ES_AUTH_APIKEY
-        - name: MONGO_CA
-          valueFrom:
-            configMapKeyRef:
-              name: api-config-map
-              key: MONGO_CA
-        - name: BUNDLR_WALLET
-          valueFrom:
-            configMapKeyRef:
-              name: api-config-map
-              key: BUNDLR_WALLET
-        - name: ES_CA
-          valueFrom:
-            configMapKeyRef:
-              name: api-config-map
-              key: ES_CA
-        - name: BUNDLR_ADDRESS
-          valueFrom:
-            configMapKeyRef:
-              name: api-config-map
-              key: BUNDLR_ADDRESS
-        - name: BUNDLR_CURRENCY
-          valueFrom:
-            configMapKeyRef:
-              name: api-config-map
-              key: BUNDLR_CURRENCY
-        - name: COLLECTION_SRC
-          valueFrom:
-            configMapKeyRef:
-              name: api-config-map
-              key: COLLECTION_SRC
-        - name: TWEET_SRC
-          valueFrom:
-            configMapKeyRef:
-              name: api-config-map
-              key: TWEET_SRC
-        - name: TWITTER_ACCOUNT_SRC
+              name: eck-search-secret
+              key: ECK_APIKEY
+        - name: ECK_CA
           valueFrom:
             configMapKeyRef:
               name: eck-search-config-map
-              key: TWITTER_ACCOUNT_SRC
+              key: ECK_CA
         ports:
         - name: http
           containerPort: 3000
         volumeMounts:
-        # - name: api-config-map
-        #   mountPath: /config
-        #   readOnly: true
         - name: eck-search-secret
           mountPath: /secrets
           readOnly: true

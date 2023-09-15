@@ -5,5 +5,10 @@ resources:
 - config_map.yaml
 - deployment.yaml
 - host.yaml
-- secret_sealed.yaml
+- sealed.yaml
 - service.yaml
+
+configMapGenerator:
+- name: eck-search-config-map
+  files:
+  - config.properties
