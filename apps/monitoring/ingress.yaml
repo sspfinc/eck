@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: grafana.petersfarber.com
+  - host: grafana.sspf.app
     http:
       paths:
       - path: /
@@ -21,17 +21,7 @@ spec:
             name: kube-prometheus-stack-grafana
             port:
               number: 80
-  # - host: prometheus.petersfarber.com
-  #   http:
-  #     paths:
-  #     - path: /prometheus
-  #       pathType: Prefix
-  #       backend:
-  #         service:
-  #           name: kube-prometheus-stack-prometheus
-  #           port:
-  #             number: 80
   tls:
   - secretName: grafana-secret-tls
     hosts:
-    - grafana.petersfarber.com
+    - grafana.sspf.app

@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: argocd.petersfarber.com
+  - host: argocd.sspf.app
     http:
       paths:
       - path: /
@@ -23,4 +23,4 @@ spec:
   tls:
   - secretName: argocd-secret-tls
     hosts:
-    - argocd.petersfarber.com
+    - argocd.sspf.app

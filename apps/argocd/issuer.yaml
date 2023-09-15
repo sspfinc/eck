@@ -4,7 +4,7 @@ metadata:
   name: letsencrypt-issuer
 spec:
   acme:
-    email: peter@capsl8.com
+    email: support@capsl8.com
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-issuer-argocd-key

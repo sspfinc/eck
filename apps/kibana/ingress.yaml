@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: kibana.petersfarber.com
+  - host: kibana.sspf.app
     http:
       paths:
       - path: /
@@ -25,6 +25,6 @@ spec:
   tls:
   - secretName: kibana-secret-tls
     hosts:
-    - kibana.petersfarber.com
+    - kibana.sspf.app
 status:
   loadBalancer: {}
