@@ -9,5 +9,5 @@ resources:
 
 configMapGenerator:
 - name: eck-search-config-map
-  files:
+  envs:
   - config.properties
