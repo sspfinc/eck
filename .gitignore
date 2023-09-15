@@ -10,6 +10,6 @@ __old/
 .DS_Store
 
 
-*secrets.yaml
+*secrets.*
 
 .env
