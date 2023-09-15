@@ -1,10 +1,17 @@
 import Fastify from 'fastify';
+import fastifyFavicon from 'fastify-favicon';
 import { ECKSearch } from './eck-search';
 
 const eck = new ECKSearch();
 
 const fastify = Fastify({
   logger: true,
+});
+
+fastify.register(fastifyFavicon, {
+  path: './',
+  name: 'favicon.png',
+  maxAge: 3600,
 });
 
 // Declare a route
