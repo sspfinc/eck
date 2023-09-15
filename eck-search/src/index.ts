@@ -10,7 +10,8 @@ const fastify = Fastify({
 // Declare a route
 fastify.get('/', async function (request, reply) {
   const response = await eck.info();
-  return reply.send({ body: JSON.stringify(response) });
+  console.log(response);
+  return reply.send({ body: 'hello word' });
 });
 
 fastify.get('/health', async function (request, reply) {
