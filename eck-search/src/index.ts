@@ -12,7 +12,7 @@ export class ECKSearch {
 
   public async connect() {
     console.log(process.env.ECK_NODE);
-    console.log(process.env.ECK_API_KEY);
+    console.log(process.env.ECK_APIKEY);
     console.log(process.env.ECK_CA);
     this.client = new Client({
       node: process.env.ECK_NODE,

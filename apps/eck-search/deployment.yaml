@@ -31,11 +31,11 @@ spec:
             secretKeyRef:
               name: eck-search-secret
               key: ECK_APIKEY
-        # - name: ECK_CA
-        #   valueFrom:
-        #     configMapKeyRef:
-        #       name: eck-search-config-map
-        #       key: ECK_CA
+        - name: ECK_CA
+          valueFrom:
+            configMapKeyRef:
+              name: eck-search-config-map
+              key: ECK_CA
         ports:
         - name: http
           containerPort: 3000
