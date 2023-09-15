@@ -11,5 +11,4 @@ argocd app sync applications
 ## Sync All
 argocd app sync -l app.kubernetes.io/instance
 
-
 ```
