@@ -82,10 +82,10 @@ applications:
       prometheusOperator.admissionWebhooks.patch.enabled: false
       prometheusOperator.tlsProxy.enabled: false
 
-- name: sealed-secrets-controller
+- name: sealed-secrets
   enabled: true
   sync-wave: "-2"
-  namespace: sealed-secrets
+  createNamespace: true
   repoURL: https://bitnami-labs.github.io/sealed-secrets
   targetRevision: v2.13.0
   helm:
