@@ -10,7 +10,7 @@ const fastify = Fastify({
 
 fastify.register(fastifyFavicon, {
   path: './',
-  name: 'favicon.png',
+  name: 'favicon.ico',
   maxAge: 3600,
 });
 
