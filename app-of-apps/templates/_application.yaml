@@ -19,7 +19,7 @@ spec:
     namespace: {{ $application.namespace | default $application.name }}
     server: {{ $root.Values.spec.destination.server }}
   source:
-    chart: {{ $application.name }}
+    chart: {{ $application.chart | default $application.name }}
     helm: {{ toYaml $application.helm | nindent 6 }}
     repoURL: {{ $application.repoURL }}
     targetRevision: {{ $application.targetRevision }}    
