@@ -10,12 +10,12 @@ const fastify = Fastify({
 // Declare a route
 fastify.get('/', async function (request, reply) {
   const response = await eck.info();
-  return reply.send(response);
+  return reply.send({ body: JSON.stringify(response) });
 });
 
 fastify.get('/health', async function (request, reply) {
   const response = await eck.healthReport();
-  return reply.send(response);
+  return reply.send({ body: JSON.stringify(response) });
 });
 
 // Run the server!
