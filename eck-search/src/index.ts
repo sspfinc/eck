@@ -10,7 +10,7 @@ const fastify = Fastify({
 // Declare a route
 fastify.get('/', async function (request, reply) {
   const response = await eck.info();
-  console.log(response);
+  console.log(typeof response);
   return reply.send({ body: 'hello word' });
 });
 
