@@ -8,16 +8,14 @@ const fastify = Fastify({
 });
 
 // Declare a route
-fastify.get('/', async (request, reply) => {
+fastify.get('/', async function (request, reply) {
   const response = await eck.info();
-  reply.send(response);
-  return response;
+  return reply.send(response);
 });
 
-fastify.get('/health', async (request, reply) => {
+fastify.get('/health', async function (request, reply) {
   const response = await eck.healthReport();
-  reply.send(response);
-  return response;
+  return reply.send(response);
 });
 
 // Run the server!
