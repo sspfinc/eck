@@ -38,10 +38,12 @@ export class ECKSearch {
   public async info() {
     const result = await this.client.info();
     console.log(result);
+    return result;
   }
 
   public async healthReport() {
     const result = await this.client.healthReport({});
     console.log(result);
+    return result;
   }
 }
