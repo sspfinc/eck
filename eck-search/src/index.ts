@@ -1,19 +1,24 @@
 import { Client } from '@elastic/elasticsearch';
 import { readFileSync } from 'fs';
 
+import dotenv from 'dotenv';
+
 export class ECKSearch {
   private client: Client;
 
-  constructor() {}
+  constructor() {
+    dotenv.config();
+  }
 
   public async connect() {
+    console.log(process.env.ECK_NODE);
     this.client = new Client({
-      node: 'https://mycluster-es-internal-http:9200',
+      node: process.env.ECK_NODE,
       auth: {
-        apiKey: 'c2lmem1Zb0JNMVE3ZTZ6YkNxemQ6b3c3S0ZfMTFTTGVIeW9HcHN4Sk5TQQ==',
+        apiKey: process.env.ECK_APIKEY,
       },
       tls: {
-        ca: readFileSync('../secrets/tls.crt'),
+        ca: readFileSync(process.env.ECK_CA),
         rejectUnauthorized: false,
       },
     });

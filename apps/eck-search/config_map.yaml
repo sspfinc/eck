@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-config-map
+  namespace: backend
+data:
+  ECK_CA: /secrets/eck_ca.crt
+
+
