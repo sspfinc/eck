@@ -29,6 +29,7 @@ WORKDIR /usr/src/app
 
 # copy from build image
 COPY --from=BUILD_IMAGE /usr/src/app/dist ./dist
+COPY --from=BUILD_IMAGE /usr/src/app/favicon.png ./dist/favicon.png
 COPY --from=BUILD_IMAGE /usr/src/app/node_modules ./node_modules
 
 EXPOSE 3000
