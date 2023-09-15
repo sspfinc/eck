@@ -2,3 +2,9 @@ __k8s-bootstrapper-main/
 __old/
 
 .terraform/
+
+**/secrets/
+
+**/node_modules/
+
+.DS_Store
