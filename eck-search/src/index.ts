@@ -11,11 +11,13 @@ const fastify = Fastify({
 fastify.get('/', async (request, reply) => {
   const response = await eck.info();
   reply.send(response);
+  return response;
 });
 
 fastify.get('/health', async (request, reply) => {
   const response = await eck.healthReport();
   reply.send(response);
+  return response;
 });
 
 // Run the server!
