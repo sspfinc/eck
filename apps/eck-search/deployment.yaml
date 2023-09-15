@@ -43,6 +43,9 @@ spec:
         - name: eck-search-secret
           mountPath: /secrets
           readOnly: true
+        - name: eck-search-config-map
+          mountPath: /config
+          readOnly: true
       volumes:
       - name: eck-search-config-map
         configMap:
