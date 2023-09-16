@@ -61,7 +61,7 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 18Gi
+            storage: 20Gi
         storageClassName: do-block-storage-retain
   # - name: ingest-nodes
   #   count: 1
