@@ -35,7 +35,7 @@ spec:
             storage: 3Gi
         storageClassName: do-block-storage
   - name: data-nodes
-    count: 8
+    count: 6
     config:
       node.roles: ["data"]
     podTemplate:
