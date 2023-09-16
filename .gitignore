@@ -1,15 +1,18 @@
-__k8s-bootstrapper-main/
-__old/
-
-.terraform/
-
-**/secrets/
-
-**/node_modules/
-
 .DS_Store
 
+secrets.*
+pub-sealed-secrets.pem
 
-*secrets.*
+# Local .terraform directories
+**/.terraform/*
 
-.env
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+
+# tfvars and plan files
+*.tfvars
+*.out
