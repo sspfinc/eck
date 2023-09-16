@@ -24,8 +24,18 @@ spec:
             privileged: true
             runAsUser: 0
           command: ['sh', '-c', 'sysctl -w vm.max_map_count=262144']
+    volumeClaimTemplates:
+    - metadata:
+        name: elasticsearch-data
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 3Gi
+        storageClassName: standard
   - name: data-nodes
-    count: 6
+    count: 8
     config:
       node.roles: ["data"]
     podTemplate:
@@ -43,3 +53,42 @@ spec:
             privileged: true
             runAsUser: 0
           command: ['sh', '-c', 'sysctl -w vm.max_map_count=262144']
+    volumeClaimTemplates:
+    - metadata:
+        name: elasticsearch-data
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 12Gi
+        storageClassName: standard
+  # - name: ingest-nodes
+  #   count: 1
+  #   config:
+  #     node.roles: ["ingest", "transform"]
+  #   podTemplate:
+  #     spec:
+  #       containers:
+  #       - name: elasticsearch
+  #         resources:
+  #           requests:
+  #             memory: 2Gi
+  #           limits:
+  #             memory: 2Gi
+  #       initContainers:
+  #       - name: sysctl
+  #         securityContext:
+  #           privileged: true
+  #           runAsUser: 0
+  #         command: ['sh', '-c', 'sysctl -w vm.max_map_count=262144']
+  #   volumeClaimTemplates:
+  #   - metadata:
+  #       name: elasticsearch-data
+  #     spec:
+  #       accessModes:
+  #       - ReadWriteOnce
+  #       resources:
+  #         requests:
+  #           storage: 3Gi
+  #       storageClassName: standard
