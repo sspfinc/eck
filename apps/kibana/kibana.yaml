@@ -1,7 +1,7 @@
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
-  name: kibana-nyc1
+  name: cluster-nyc1
 spec:
   version: 8.9.2
   count: 1
