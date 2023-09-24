@@ -33,7 +33,7 @@ spec:
         resources:
           requests:
             storage: 5Gi
-        storageClassName: do-block-storage-retain
+        storageClassName: do-block-storage
   - name: data-nodes
     count: 6
     config:
@@ -62,7 +62,7 @@ spec:
         resources:
           requests:
             storage: 20Gi
-        storageClassName: do-block-storage-retain
+        storageClassName: do-block-storage
   # - name: ingest-nodes
   #   count: 1
   #   config:
