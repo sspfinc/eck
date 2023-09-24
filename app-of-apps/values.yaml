@@ -9,7 +9,7 @@ spec:
 applications:
 
 - name: eck-search
-  enabled: true
+  enabled: false
   sync-wave: "5"
 
 - name: elasticsearch
