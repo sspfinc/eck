@@ -4,5 +4,4 @@ namespace: eck
 resources:
 - deployment.yaml
 - host.yaml
-- sealed.yaml
 - service.yaml
