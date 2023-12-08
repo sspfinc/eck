@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: eck-search-ui.sspf.app
+  - host: sspf.app
     http:
       paths:
       - path: /
@@ -23,4 +23,4 @@ spec:
   tls:
   - secretName: eck-search-ui-secret-tls
     hosts:
-    - eck-search-ui.sspf.app
+    - sspf.app
