@@ -8,6 +8,6 @@ resources:
 - service.yaml
 
 configMapGenerator:
-- name: eck-search-config-map
+- name: eck-search-api-config-map
   envs:
   - config.properties

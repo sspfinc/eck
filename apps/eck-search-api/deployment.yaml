@@ -1,55 +1,55 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eck-search
+  name: eck-search-api
   namespace: eck
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: eck-search
+      app: eck-search-api
   strategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
-        app: eck-search
+        app: eck-search-api
     spec:
       imagePullSecrets:
       - name: regcred
       containers:
-      - name: eck-search
-        image: sspf/eck-search
+      - name: eck-search-api
+        image: sspf/eck-search-api
         env:
         - name: ECK_NODE
           valueFrom:
             secretKeyRef:
-              name: eck-search-secret
+              name: eck-search-api-secret
               key: ECK_NODE
         - name: ECK_APIKEY
           valueFrom:
             secretKeyRef:
-              name: eck-search-secret
+              name: eck-search-api-secret
               key: ECK_APIKEY
         - name: ECK_CA
           valueFrom:
             configMapKeyRef:
-              name: eck-search-config-map
+              name: eck-search-api-config-map
               key: ECK_CA
         ports:
         - name: http
           containerPort: 3000
         volumeMounts:
-        - name: eck-search-secret
+        - name: eck-search-api-secret
           mountPath: /secrets
           readOnly: true
-        - name: eck-search-config-map
+        - name: eck-search-api-config-map
           mountPath: /config
           readOnly: true
       volumes:
-      - name: eck-search-config-map
+      - name: eck-search-api-config-map
         configMap:
-          name: eck-search-config-map
-      - name: eck-search-secret
+          name: eck-search-api-config-map
+      - name: eck-search-api-secret
         secret:
-          secretName: eck-search-secret
+          secretName: eck-search-api-secret

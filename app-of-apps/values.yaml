@@ -8,8 +8,12 @@ spec:
 
 applications:
 
-- name: eck-search
-  enabled: false
+- name: eck-search-ui
+  enabled: true
+  sync-wave: "6"
+
+- name: eck-search-api
+  enabled: true
   sync-wave: "5"
 
 - name: elasticsearch

@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-eck-search
+  name: ingress-eck-search-api
   namespace: argocd
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
@@ -10,17 +10,17 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: eck-search.sspf.app
+  - host: eck-search-api.sspf.app
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: eck-search
+            name: eck-search-api
             port:
               number: 80
   tls:
-  - secretName: eck-search-secret-tls
+  - secretName: eck-search-api-secret-tls
     hosts:
-    - eck-search.sspf.app
+    - eck-search-api.sspf.app
