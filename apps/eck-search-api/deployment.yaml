@@ -36,6 +36,16 @@ spec:
             configMapKeyRef:
               name: eck-search-api-config-map
               key: ECK_CA
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: eck-search-api-config-map
+              key: NODE_ENV
+        - name: ROLE
+          valueFrom:
+            configMapKeyRef:
+              name: eck-search-api-config-map
+              key: ROLE
         ports:
         - name: http
           containerPort: 3000
