@@ -27,4 +27,6 @@ kubectl get secret mycluster-es-http-certs-internal -n eck -o go-template='{{ind
 
 kubectl create secret docker-registry regcred --docker-username=sspf --docker-password= --docker-email=team@sspf.app --namespace eck
 
+kubectl create secret docker-registry regcred --docker-username=sspf --docker-password= --docker-email=team@sspf.app --namespace eck
+
 ```
