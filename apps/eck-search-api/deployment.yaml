@@ -41,6 +41,11 @@ spec:
             configMapKeyRef:
               name: eck-search-api-config-map
               key: NODE_ENV
+        - name: JWT_SECRET
+          valueFrom:
+            configMapKeyRef:
+              name: eck-search-api-config-map
+              key: JWT_SECRET
         - name: ROLE
           valueFrom:
             configMapKeyRef:
