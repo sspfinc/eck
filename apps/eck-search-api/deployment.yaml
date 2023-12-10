@@ -21,21 +21,21 @@ spec:
       - name: eck-search-api
         image: sspf/eck-search-api
         env:
-        - name: ECK_NODE
+        - name: ELASTIC_NODE
           valueFrom:
             secretKeyRef:
               name: eck-search-api-secret
-              key: ECK_NODE
-        - name: ECK_APIKEY
+              key: ELASTIC_NODE
+        - name: ELASTIC_API_KEY
           valueFrom:
             secretKeyRef:
               name: eck-search-api-secret
-              key: ECK_APIKEY
-        - name: ECK_CA
+              key: ELASTIC_API_KEY
+        - name: ELASTIC_CA
           valueFrom:
             configMapKeyRef:
               name: eck-search-api-config-map
-              key: ECK_CA
+              key: ELASTIC_CA
         - name: NODE_ENV
           valueFrom:
             configMapKeyRef:
